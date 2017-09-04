@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+"-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		<!-- 配置数据库相关信息 ，这个必须配置-->
+		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="hibernate.connection.url">jdbc:mysql:///hibernate</property>
+		<property name="hibernate.connection.username">root</property>
+		<property name="hibernate.connection.password">123456</property>
+		<property name="hibernate.connection.isolation">4</property>
+		
+		<!-- 配置hibernate，这个可有可无，不是必须的 -->
+		<property name="hibernate.show_sql">true</property><!-- 表示输出底层sql语句 -->
+		<property name="hibernate.format_sql">true</property>
+		<property name="hibernate.hbm2ddl.auto">update</property>
+		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+		<property name="hibernate.current_session_context_class">thread</property>
+		
+		<!-- 引入user.hbm.xml文件 -->
+		<mapping resource="one2many/employee.hbm.xml"/>
+		<mapping resource="one2many/company.hbm.xml"/>
+		<mapping resource="many2many/course.hbm.xml"/>
+		<mapping resource="many2many/student.hbm.xml"/>
+	</session-factory>
+</hibernate-configuration>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<!-- 将实体类与表进行一一对应的映射关系 -->
+	<class name="one2many.Employee" table="employee">
+		<id name="id" column="id"><generator class="native"></generator></id>
+		<property name="username" column="username"></property>
+		<property name="city" column="city"></property>
+		<property name="country" column="country"></property>
+		<property name="description" column="description"></property>
+		<!-- 双向维护外键，指定公司在员工表的外键 -->
+		<many-to-one name="company" class="one2many.Company" column="cid"></many-to-one>
+	</class>
+</hibernate-mapping>

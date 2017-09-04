@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<!-- 将实体类与表进行一一对应的映射关系 -->
+	<class name="one2many.Company" table="company">
+		<id name="id" column="id">
+			<generator class="native"></generator>
+		</id>
+		<property name="name" column="name"></property>
+		<property name="location" column="location"></property>
+		<set name="set" cascade="save-update,delete" inverse="true" batch-size="10">
+			<!-- 公司在员工表的外键的名字 -->
+			<key column="cid"></key>
+			<one-to-many class="one2many.Employee"/>
+		</set>
+	</class>
+</hibernate-mapping>
